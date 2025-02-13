@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product type"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <TextView
+        android:id="@+id/tvCompany"
+        android:layout_width="62dp"
+        android:layout_height="21dp"
+        android:text="Comapny"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="101dp"
+        android:layout_height="53dp"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="100dp"
+        android:layout_height="53dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
+
+    <RadioGroup
+        android:id="@+id/rdbgProduct"
+        android:layout_width="217dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProduct">
+
+        <RadioButton
+            android:id="@+id/rdbPhone"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Phone" />
+
+        <RadioButton
+            android:id="@+id/rdbLaptop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laptop" />
+
+        <RadioButton
+            android:id="@+id/rdbHeadhphones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Headphones" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rdbgCompany"
+        android:layout_width="171dp"
+        android:layout_height="156dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCompany">
+
+        <RadioButton
+            android:id="@+id/rdbApple"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Apple" />
+
+        <RadioButton
+            android:id="@+id/rdbSamsung"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Samsung" />
+
+        <RadioButton
+            android:id="@+id/rdbXiaomi"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Xiaomi" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="176dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="384dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
