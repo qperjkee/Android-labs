@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_input">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RadioGroup
+            android:id="@+id/rdbgProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rdbPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone" />
+
+            <RadioButton
+                android:id="@+id/rdbLaptop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laptop" />
+
+            <RadioButton
+                android:id="@+id/rdbHeadhphones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Headphones" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rdbgCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rdbApple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apple" />
+
+            <RadioButton
+                android:id="@+id/rdbSamsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Samsung" />
+
+            <RadioButton
+                android:id="@+id/rdbXiaomi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xiaomi" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK" />
+    </LinearLayout>
+
+
+</FrameLayout>
