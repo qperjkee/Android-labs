@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var tvLabelValue3: TextView
     private lateinit var tvSensorInfo: TextView
 
-    // Список типів сенсорів, які будемо відстежувати
     private val sensorTypes = listOf(
         Sensor.TYPE_ACCELEROMETER,
         Sensor.TYPE_GYROSCOPE,
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         Sensor.TYPE_GRAVITY
     )
 
-    // Відображення ID датчика на його назву
     private val sensorNames = mapOf(
         Sensor.TYPE_ACCELEROMETER to "Акселерометр",
         Sensor.TYPE_GYROSCOPE to "Гіроскоп",
@@ -56,7 +54,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         Sensor.TYPE_GRAVITY to "Гравітація"
     )
 
-    // Відображення ID датчика на підписи для його значень
     private val valueLabels = mapOf(
         Sensor.TYPE_ACCELEROMETER to Triple("X (m/s²)", "Y (m/s²)", "Z (m/s²)"),
         Sensor.TYPE_GYROSCOPE to Triple("X (rad/s)", "Y (rad/s)", "Z (rad/s)"),
@@ -69,7 +66,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         Sensor.TYPE_GRAVITY to Triple("X (m/s²)", "Y (m/s²)", "Z (m/s²)")
     )
 
-    // Список доступних датчиків на пристрої
     private val availableSensors = mutableListOf<Int>()
     private val availableSensorNames = mutableListOf<String>()
 
@@ -88,13 +84,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         tvLabelValue3 = findViewById(R.id.tv_label_value_3)
         tvSensorInfo = findViewById(R.id.tv_sensor_info)
 
-        // Отримання доступу до сенсорів
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-        // Перевірка наявності датчиків і створення списку доступних
         loadAvailableSensors()
 
-        // Налаштування спінера для вибору датчика
         setupSensorSpinner()
     }
 
@@ -107,7 +100,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
 
-        // Якщо немає доступних датчиків
         if (availableSensors.isEmpty()) {
             availableSensors.add(-1)
             availableSensorNames.add("Немає доступних датчиків")
@@ -129,29 +121,23 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Нічого не робимо
             }
         }
 
-        // Вибираємо перший датчик за замовчуванням
         if (availableSensors.isNotEmpty() && availableSensors[0] != -1) {
             selectSensor(availableSensors[0])
         }
     }
 
     private fun selectSensor(sensorType: Int) {
-        // Відписуємося від попереднього датчика
         currentSensor?.let {
             sensorManager.unregisterListener(this, it)
         }
 
-        // Оновлюємо поточний датчик
         currentSensor = sensorManager.getDefaultSensor(sensorType)
 
-        // Налаштовуємо інтерфейс
         tvSensorName.text = sensorNames[sensorType] ?: "Невідомий датчик"
 
-        // Налаштовуємо підписи значень
         val labels = valueLabels[sensorType] ?: Triple("Значення 1", "Значення 2", "Значення 3")
         tvLabelValue1.text = labels.first
         tvValue1.text = "0.00"
@@ -176,7 +162,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             tvValue3.visibility = View.GONE
         }
 
-        // Відображаємо інформацію про датчик
         currentSensor?.let {
             tvSensorInfo.text = """
                 Виробник: ${it.vendor}
@@ -187,7 +172,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             """.trimIndent()
         }
 
-        // Підписуємося на події від нового датчика
         currentSensor?.let {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
@@ -195,7 +179,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
-        // Поновлюємо підписку
         currentSensor?.let {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
@@ -203,12 +186,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onPause() {
         super.onPause()
-        // Відписуємося від датчика при призупиненні активності
         sensorManager.unregisterListener(this)
     }
 
     override fun onSensorChanged(event: SensorEvent) {
-        // Відображаємо дані відповідно до типу датчика
         when (event.sensor.type) {
             Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE,
             Sensor.TYPE_MAGNETIC_FIELD, Sensor.TYPE_GRAVITY -> {
@@ -219,14 +200,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
             Sensor.TYPE_LIGHT, Sensor.TYPE_PROXIMITY, Sensor.TYPE_PRESSURE,
             Sensor.TYPE_AMBIENT_TEMPERATURE, Sensor.TYPE_RELATIVE_HUMIDITY -> {
-                // Датчики з одним значенням
                 tvValue1.text = String.format("%.2f", event.values[0])
             }
         }
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-        // Метод викликається при зміні точності датчика
         val accuracyText = when (accuracy) {
             SensorManager.SENSOR_STATUS_ACCURACY_HIGH -> "Висока"
             SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM -> "Середня"
